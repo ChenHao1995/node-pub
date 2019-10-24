@@ -1,0 +1,29 @@
+{
+  "name": "node-pub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChenHao1995/node-pub.git"
+  },
+  "author": "chenhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChenHao1995/node-pub/issues"
+  },
+  "homepage": "https://github.com/ChenHao1995/node-pub#readme",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "htmling": "0.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
