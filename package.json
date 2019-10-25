@@ -21,7 +21,8 @@
     "consolidate": "^0.15.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "htmling": "0.0.8"
+    "htmling": "0.0.8",
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
