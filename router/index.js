@@ -13,7 +13,10 @@ router.use(function(req, res, next) {
 });
 
 router.use("/file", function(req, res, next) {
-  fs.readFile("./static/excel/node_test.xlsx", function(error, data) {
+  fs.readFile(__dirname + "/../static/excel/node_test.xlsx", function(
+    error,
+    data
+  ) {
     console.log(error);
     console.log(data);
     res.setHeader("Content-Type", "application/vnd.ms-excel;charset=UTF-8");
