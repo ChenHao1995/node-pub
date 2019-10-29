@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./app.js"
+    "start": "nodemon ./app.js",
+    "build": "webpack --config ./webpack/webpack.config.base.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,14 @@
     "htmling": "0.0.8",
     "jquery": "^3.4.1",
     "mysql": "^2.17.1",
-    "open": "^7.0.0"
+    "open": "^7.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "clean-webpack-plugin": "^3.0.0",
+    "html-loader": "^0.5.5",
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   }
 }

@@ -3,8 +3,8 @@ var app = express()
 // var consolidate = require('consolidate')
 var HTMLing = require('htmling')
 var router = require('./router')
-const { spawn } = require('child_process')
-const open = require('open')
+// const { spawn } = require('child_process')
+// const open = require('open')
 
 // const ls = spawn('ls', ['-lh', '/usr'])
 // ls.stdout.on('data', data => {
@@ -19,7 +19,7 @@ const open = require('open')
 //   console.log(`child process exited with code ${code}`)
 // })
 
-// app.engine('html', consolidate.ejs)
+// app.engine('html', consolidate.htmling)
 // app.set('view engine', 'html')
 // app.set('views', __dirname + '/views')
 
