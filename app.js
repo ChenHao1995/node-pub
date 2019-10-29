@@ -4,6 +4,7 @@ var app = express()
 var HTMLing = require('htmling')
 var router = require('./router')
 const { spawn } = require('child_process')
+const open = require('open')
 
 // const ls = spawn('ls', ['-lh', '/usr'])
 // ls.stdout.on('data', data => {
@@ -37,4 +38,5 @@ app.on('connection', function(req, cltSocket, head) {
 })
 app.listen(8888, '127.0.0.1', () => {
   console.log('port:8888-->')
+  // open('http://localhost:8888/')
 })
