@@ -25,6 +25,9 @@ const { spawn } = require('child_process')
 app.engine('html', HTMLing.express(__dirname + '/views/'))
 app.set('view engine', 'html')
 
+// 静态服务
+app.use('/source', express.static('static'))
+
 app.use(express.json())
 
 // mount the router on the app
@@ -33,5 +36,5 @@ app.on('connection', function(req, cltSocket, head) {
   console.log('close')
 })
 app.listen(8888, '127.0.0.1', () => {
-  console.log('-->')
+  console.log('port:8888-->')
 })
