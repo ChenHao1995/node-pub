@@ -4,6 +4,7 @@ var app = express()
 var HTMLing = require('htmling')
 var router = require('./router')
 var path = require('path')
+var http = require('http')
 
 const port = Math.round((1 + Math.random()) * 1000)
 
@@ -37,15 +38,31 @@ app.use(express.json())
 
 // mount the router on the app
 app.use('/', router)
-app.on('connection', function(req, cltSocket, head) {
-  console.log('close')
-})
-app.listen(port, '127.0.0.1', () => {
+// app.on('connection', function(req, cltSocket, head) {
+//   console.log('connection')
+// })
+
+// app.listen(port, '127.0.0.1', () => {
+//   console.log(`port:${port}-->`)
+//   // open('http://localhost:8888/')
+// })
+
+const server = http.createServer(app)
+
+server.listen(port, '127.0.0.1', () => {
   console.log(`port:${port}-->`)
-  // open('http://localhost:8888/')
 })
 
-process.on('message', function(data) {
-  console.log('this is a child' + data.num)
-  process.send({ msg: 'child' + data.num + 'success' })
+server.on('connection', function(socket) {
+  console.log('connection')
+})
+
+process.on('message', function(data, tcp) {
+  // console.log('this is a child' + data.num)
+  process.send({ msg: 'child' + data + 'success' })
+  if (data.includes('server')) {
+    tcp.on('connection', socket => {
+      socket.end('by child')
+    })
+  }
 })
