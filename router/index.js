@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-const fs = require('fs')
+var fs = require('fs')
 // const jquery = require('jquery')
 
 router.use(function(req, res, next) {
@@ -35,7 +35,6 @@ router.use(
   }
 )
 
-// a middleware sub-stack that handles GET requests to the /user/:id path
 router.get(
   '/user/:id',
   function(req, res, next) {
@@ -43,9 +42,7 @@ router.get(
     if (req.params.id === '0') {
       req.chenhao = 'chenhao'
       next('route')
-    }
-    // otherwise pass control to the next middleware function in this stack
-    else next()
+    } else next()
   },
   function(req, res, next) {
     res.render('home', { title: 'id === 0', content: 'chenhao' })
@@ -53,7 +50,6 @@ router.get(
   }
 )
 
-// handler for the /user/:id path, which renders a special page
 router.get('/user/:id', function(req, res, next) {
   // fs.readFile(__dirname + '/../views/home.html', function(error, data) {
   //   const result = data
