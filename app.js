@@ -5,6 +5,8 @@ var HTMLing = require('htmling')
 var router = require('./router')
 var path = require('path')
 
+const port = Math.round((1 + Math.random()) * 1000)
+
 // const { spawn } = require('child_process')
 // const open = require('open')
 
@@ -38,7 +40,12 @@ app.use('/', router)
 app.on('connection', function(req, cltSocket, head) {
   console.log('close')
 })
-app.listen(8888, '127.0.0.1', () => {
-  console.log('port:8888-->')
+app.listen(port, '127.0.0.1', () => {
+  console.log(`port:${port}-->`)
   // open('http://localhost:8888/')
+})
+
+process.on('message', function(data) {
+  console.log('this is a child' + data.num)
+  process.send({ msg: 'child' + data.num + 'success' })
 })
