@@ -54,7 +54,7 @@ server.listen(port, '127.0.0.1', () => {
 })
 
 server.on('connection', function(socket) {
-  console.log('connection')
+  console.log('connection-http')
 })
 
 process.on('message', function(data, tcp) {

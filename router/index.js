@@ -5,8 +5,8 @@ var fs = require('fs')
 
 router.use(function(req, res, next) {
   console.log('first', Date.now())
-  var str = '深入浅出node.js'
-  var buf = new Buffer(str, 'utf-8')
+  // var str = '深入浅出node.js'
+  // var buf = new Buffer(str, 'utf-8')
   next()
 })
 
