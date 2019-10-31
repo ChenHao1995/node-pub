@@ -71,8 +71,12 @@ router.get('/user/:id', function(req, res, next) {
   //       )
   //   )
   // })
-  res.render('home', { title: 'id === 0', content: 'Home' })
+  res.render('home', { title: 'id === 0', content: process.pid })
   // res.render('home')
+})
+
+router.use('/test/process', function(req, res) {
+  res.end(`use child process ${process.pid}`)
 })
 
 module.exports = router

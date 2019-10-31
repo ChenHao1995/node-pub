@@ -6,6 +6,9 @@ var server = net.createServer()
 server.on('connection', socket => {
   socket.end('by parent')
 })
+server.on('close', () => {
+  console.log('close')
+})
 
 server.listen(1337, function() {
   for (var i = 0; i < cpus.length; i++) {
