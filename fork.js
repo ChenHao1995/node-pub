@@ -16,5 +16,5 @@ server.listen(1337, function() {
     // child.send({ num: i })
     child.send(`server_child_${i}`, server)
   }
-  // server.close()
+  server.close()
 })

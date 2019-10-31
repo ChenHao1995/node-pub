@@ -59,10 +59,11 @@ server.on('connection', function(socket) {
 
 process.on('message', function(data, tcp) {
   // console.log('this is a child' + data.num)
-  process.send({ msg: 'child' + data + 'success' })
+  // process.send({ msg: 'child' + data + 'success' })
   if (data.includes('server')) {
     tcp.on('connection', socket => {
-      socket.end('by child')
+      // socket.end(`by child ${process.pid}`)
+      server.emit('connection', socket)
     })
   }
 })
