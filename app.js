@@ -6,7 +6,7 @@ var router = require('./router')
 var path = require('path')
 var http = require('http')
 
-const port = Math.round((1 + Math.random()) * 1000)
+let port = Math.round((1 + Math.random()) * 1000)
 
 // const { spawn } = require('child_process')
 // const open = require('open')
@@ -49,10 +49,6 @@ app.use('/', router)
 
 const server = http.createServer(app)
 
-server.listen(port, '127.0.0.1', () => {
-  console.log(`port:${port}-->`)
-})
-
 server.on('connection', function(socket) {
   console.log('connection-http')
 })
@@ -61,6 +57,10 @@ process.on('message', function(data, tcp) {
   // console.log('this is a child' + data.num)
   // process.send({ msg: 'child' + data + 'success' })
   if (data.includes('server')) {
+    port = data.split(':')[1]
+    server.listen(port, '127.0.0.1', () => {
+      console.log(`port:${port}-->`)
+    })
     tcp.on('connection', socket => {
       // socket.end(`by child ${process.pid}`)
       server.emit('connection', socket)
