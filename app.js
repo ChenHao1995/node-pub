@@ -53,6 +53,7 @@ server.on('connection', function(socket) {
   console.log('connection-http')
 })
 
+var workerTcp
 process.on('message', function(data, tcp) {
   // console.log('this is a child' + data.num)
   // process.send({ msg: 'child' + data + 'success' })
@@ -61,9 +62,19 @@ process.on('message', function(data, tcp) {
     server.listen(port, '127.0.0.1', () => {
       console.log(`port:${port}-->`)
     })
+    workerTcp = tcp
     tcp.on('connection', socket => {
       // socket.end(`by child ${process.pid}`)
       server.emit('connection', socket)
     })
   }
+})
+
+// setInterval(function() {
+//   throw '模拟未补货的异常'
+// }, 5000)
+process.on('uncaughtException', function() {
+  workerTcp.close(function() {
+    process.exit(1)
+  })
 })
